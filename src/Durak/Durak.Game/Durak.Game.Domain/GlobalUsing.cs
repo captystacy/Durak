@@ -1,0 +1,1 @@
+﻿global using Durak.Game.Domain.Base;
