@@ -17,12 +17,7 @@ namespace Durak.Game.Web.Definitions.DbContext
         public override void ConfigureServices(IServiceCollection services, WebApplicationBuilder builder)
             => services.AddDbContext<ApplicationDbContext>(config =>
             {
-                // UseInMemoryDatabase - This for demo purposes only!
-                // Should uninstall package "Microsoft.EntityFrameworkCore.InMemory" and install what you need. 
-                // For example: "Microsoft.EntityFrameworkCore.SqlServer"
-                // uncomment line below to use UseSqlServer(). Don't forget setup connection string in appSettings.json 
-                config.UseInMemoryDatabase("DEMO_PURPOSES_ONLY");
-                // config.UseSqlServer(configuration.GetConnectionString(nameof(ApplicationDbContext)));
+                config.UseSqlServer(builder.Configuration.GetConnectionString(nameof(ApplicationDbContext)));
             });
     }
 }

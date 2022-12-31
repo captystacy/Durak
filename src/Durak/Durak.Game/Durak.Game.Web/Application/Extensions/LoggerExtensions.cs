@@ -1,5 +1,4 @@
-﻿
-namespace Durak.Game.Web.Application
+﻿namespace Durak.Game.Web.Application.Extensions
 {
     /// <summary>
     /// The number identifiers for events in the microservices
@@ -37,7 +36,7 @@ namespace Durak.Game.Web.Application
             }
         }
 
-        private static readonly Action<Microsoft.Extensions.Logging.ILogger, string, Exception?> UserRegistrationExecute =
+        private static readonly Action<ILogger, string, Exception?> UserRegistrationExecute =
             LoggerMessage.Define<string>(LogLevel.Information, EventNumbers.UserRegistrationId,
                 "User {userName} successfully registred");
 
