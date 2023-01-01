@@ -26,12 +26,12 @@ namespace Durak.Auth.Infrastructure.DatabaseInitialization
             // This is should not be used when UseInMemoryDatabase()
             // It should be uncomment when using UseSqlServer() settings or any other providers.
             // -----------------------------------------------------------------------------
-            //await context!.Database.EnsureCreatedAsync();
-            //var pending = await context.Database.GetPendingMigrationsAsync();
-            //if (pending.Any())
-            //{
-            //    await context!.Database.MigrateAsync();
-            //}
+            await context!.Database.EnsureCreatedAsync();
+            var pending = await context.Database.GetPendingMigrationsAsync();
+            if (pending.Any())
+            {
+                await context!.Database.MigrateAsync();
+            }
 
             if (context.Users.Any())
             {
@@ -122,12 +122,12 @@ namespace Durak.Auth.Infrastructure.DatabaseInitialization
             // This is should not be used when UseInMemoryDatabase()
             // It should be uncomment when using UseSqlServer() settings or any other providers.
             // -----------------------------------------------------------------------------
-            //await context!.Database.EnsureCreatedAsync();
-            //var pending = await context.Database.GetPendingMigrationsAsync();
-            //if (pending.Any())
-            //{
-            //    await context!.Database.MigrateAsync();
-            //}
+            await context!.Database.EnsureCreatedAsync();
+            var pending = await context.Database.GetPendingMigrationsAsync();
+            if (pending.Any())
+            {
+                await context!.Database.MigrateAsync();
+            }
 
             if (context.EventItems.Any())
             {

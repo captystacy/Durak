@@ -1,4 +1,5 @@
 ﻿using Durak.Auth.Domain;
+using Durak.Auth.Infrastructure;
 using Durak.Auth.Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -25,26 +26,19 @@ namespace Durak.Auth.Infrastructure
             builder.UseOpenIddict<Guid>();
             base.OnModelCreating(builder);
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            // It should be removed when using real Database (not in memory mode)
-            optionsBuilder.ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning));
-            base.OnConfiguring(optionsBuilder);
-        }
     }
 }
 
-///// <summary>
-///// ATTENTION!
-///// It should uncomment two line below when using real Database (not in memory mode). Don't forget update connection string.
-///// </summary>
-//public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
-//{
-//    public ApplicationDbContext CreateDbContext(string[] args)
-//    {
-//        var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-//        optionsBuilder.UseSqlServer("Server=<SQL>;Database=<DatabaseName>;User ID=<UserName>;Password=<Password>");
-//        return new ApplicationDbContext(optionsBuilder.Options);
-//    }
-//}
+/// <summary>
+/// ATTENTION!
+/// It should uncomment two line below when using real Database (not in memory mode). Don't forget update connection string.
+/// </summary>
+public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
+{
+    public ApplicationDbContext CreateDbContext(string[] args)
+    {
+        var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+        optionsBuilder.UseSqlServer("Server=localhost;Database=DurakAuth;User ID=sa;Password=KWud6MtrL3M3xaUB!QrcnSq9YVhHVT4VtYxe249HY$*fxcLp5p39Hj^&pFLFK7VC;TrustServerCertificate=True");
+        return new ApplicationDbContext(optionsBuilder.Options);
+    }
+}
