@@ -13,11 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Durak.Game.Infrastructure",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Durak.Auth", "Durak.Auth", "{B5448B7F-17F1-4AF7-A5BE-42AC9E28B635}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Durak.Auth.Web", "Durak.Auth\Durak.Auth.Web\Durak.Auth.Web.csproj", "{D213C39F-2AC0-414D-95D0-BEBB274265D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Durak.Auth.Web", "Durak.Auth\Durak.Auth.Web\Durak.Auth.Web.csproj", "{D213C39F-2AC0-414D-95D0-BEBB274265D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Durak.Auth.Domain", "Durak.Auth\Durak.Auth.Domain\Durak.Auth.Domain.csproj", "{FC7EBB7D-8ADD-4E77-8CDA-B64A27464882}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Durak.Auth.Domain", "Durak.Auth\Durak.Auth.Domain\Durak.Auth.Domain.csproj", "{FC7EBB7D-8ADD-4E77-8CDA-B64A27464882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Durak.Auth.Infrastructure", "Durak.Auth\Durak.Auth.Infrastructure\Durak.Auth.Infrastructure.csproj", "{80CFF2D2-5F62-496F-BDFB-2786F904E353}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Durak.Auth.Infrastructure", "Durak.Auth\Durak.Auth.Infrastructure\Durak.Auth.Infrastructure.csproj", "{80CFF2D2-5F62-496F-BDFB-2786F904E353}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Durak.AngularUI", "Durak.AngularUI\Durak.AngularUI.esproj", "{43705EEF-AF1C-4652-8A9F-1541A48D3B57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,12 @@ Global
 		{80CFF2D2-5F62-496F-BDFB-2786F904E353}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80CFF2D2-5F62-496F-BDFB-2786F904E353}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80CFF2D2-5F62-496F-BDFB-2786F904E353}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43705EEF-AF1C-4652-8A9F-1541A48D3B57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43705EEF-AF1C-4652-8A9F-1541A48D3B57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43705EEF-AF1C-4652-8A9F-1541A48D3B57}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{43705EEF-AF1C-4652-8A9F-1541A48D3B57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43705EEF-AF1C-4652-8A9F-1541A48D3B57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43705EEF-AF1C-4652-8A9F-1541A48D3B57}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
