@@ -21,16 +21,12 @@ namespace Durak.Auth.Infrastructure.DatabaseInitialization
             using var scope = serviceProvider.CreateScope();
             await using var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
 
-            // ATTENTION!
-            // -----------------------------------------------------------------------------
-            // This is should not be used when UseInMemoryDatabase()
-            // It should be uncomment when using UseSqlServer() settings or any other providers.
-            // -----------------------------------------------------------------------------
             await context!.Database.EnsureCreatedAsync();
+
             var pending = await context.Database.GetPendingMigrationsAsync();
             if (pending.Any())
             {
-                await context!.Database.MigrateAsync();
+                await context.Database.MigrateAsync();
             }
 
             if (context.Users.Any())
@@ -43,7 +39,7 @@ namespace Durak.Auth.Infrastructure.DatabaseInitialization
             foreach (var role in roles)
             {
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
-                if (!context!.Roles.Any(r => r.Name == role))
+                if (!context.Roles.Any(r => r.Name == role))
                 {
                     await roleManager.CreateAsync(new ApplicationRole { Name = role, NormalizedName = role.ToUpper() });
                 }
@@ -123,11 +119,11 @@ namespace Durak.Auth.Infrastructure.DatabaseInitialization
             // It should be uncomment when using UseSqlServer() settings or any other providers.
             // -----------------------------------------------------------------------------
             await context!.Database.EnsureCreatedAsync();
-            var pending = await context.Database.GetPendingMigrationsAsync();
-            if (pending.Any())
-            {
-                await context!.Database.MigrateAsync();
-            }
+            //var pending = await context.Database.GetPendingMigrationsAsync();
+            //if (pending.Any())
+            //{
+            //    await context.Database.MigrateAsync();
+            //}
 
             if (context.EventItems.Any())
             {

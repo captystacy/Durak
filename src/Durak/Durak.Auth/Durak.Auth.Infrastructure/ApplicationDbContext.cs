@@ -38,7 +38,7 @@ public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<Applicati
     public ApplicationDbContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-        optionsBuilder.UseSqlServer("Server=localhost;Database=DurakAuth;User ID=sa;Password=KWud6MtrL3M3xaUB!QrcnSq9YVhHVT4VtYxe249HY$*fxcLp5p39Hj^&pFLFK7VC;TrustServerCertificate=True");
+        optionsBuilder.UseSqlServer("Server=192.168.100.7,1433;Database=DurakAuth;User ID=sa;Password=S3cur3P@ssW0rd!;MultipleActiveResultSets=true;TrustServerCertificate=True");
         return new ApplicationDbContext(optionsBuilder.Options);
     }
 }

@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  durak.auth.web:
+    image: ${DOCKER_REGISTRY-}durakauthweb
+    build:
+      context: .
+      dockerfile: Durak.Auth/Durak.Auth.Web/Dockerfile
+    ports:
+      - "10001:80"
+
+  durak.game.web:
+    image: ${DOCKER_REGISTRY-}durakgameweb
+    build:
+      context: .
+      dockerfile: Durak.Game/Durak.Game.Web/Dockerfile
+    ports:
+      - "20001:80"
+
+  durak.angularui:
+    image: ${DOCKER_REGISTRY-}durakangularui
+    build:
+      context: .
+      dockerfile: Durak.AngularUI/Dockerfile 
+    ports:
+      - "10000:80"
