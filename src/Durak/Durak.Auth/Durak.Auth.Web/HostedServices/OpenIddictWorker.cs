@@ -56,7 +56,8 @@ namespace Durak.Auth.Web.HostedServices
                     RedirectUris = {
                     new Uri("https://www.thunderclient.com/oauth/callback"),            // https://www.thunderclient.com/
                     new Uri($"{url}/swagger/oauth2-redirect.html"),                     // https://swagger.io/
-                    new Uri("https://localhost:20001/swagger/oauth2-redirect.html")     // https://swagger.io/ for Module
+                    new Uri("https://localhost:20001/swagger/oauth2-redirect.html"),    // https://swagger.io/ for Module
+                    new Uri("http://localhost:10000/oauth/callback")                    // for Angular
                 },
 
                     Permissions =

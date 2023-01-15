@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IOperationResult } from '../models/operation-result.model';
+import { OperationResult } from '../_interfaces/operation-result.model';
 
-import { AlertService } from '../_alert/alert.service';
-import { AppSettings } from '../app.settings';
-
+import { AlertService } from '../shared/services/alert.service';
+import { EnvironmentUrlService } from '../shared/services/environment-url.service';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +12,11 @@ import { AppSettings } from '../app.settings';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor(private _http: HttpClient, private _alertService: AlertService) { }
+  constructor(
+    private http: HttpClient, 
+    private alertService: AlertService,
+    private environmentUrl: EnvironmentUrlService
+    ) { }
 
   hidePassword: boolean = true;
 
@@ -26,16 +29,16 @@ export class RegisterComponent {
   });
 
   register(): void {
-    this._http.post(AppSettings.AUTH_ENDPOINT + 'profiles/register', this.registerForm.value).subscribe({
+    this.http.post(this.environmentUrl.authEndpoint + 'api/profiles/register', this.registerForm.value).subscribe({
       next: (data) => {
-        var operation = data as IOperationResult;
+        var operation = data as OperationResult;
 
         if (!operation.ok) {
-          this._alertService.error(operation.metadata.message);
+          this.alertService.error(operation.metadata.message);
           return;
         }
 
-        this._alertService.success('Пользователь успешно зарегистрирован');
+        this.alertService.success('Пользователь успешно зарегистрирован');
       },
       error: (error) => console.error(error)
     });

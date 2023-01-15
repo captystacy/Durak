@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -6,13 +8,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
-  isExpanded = false;
+  public isLoggedIn: Observable<boolean> = this.authService.authChanged;
 
-  collapse() {
+  constructor(private authService: AuthService) { }
+
+  public isExpanded: boolean = false;
+
+  public collapse() {
     this.isExpanded = false;
   }
 
-  toggle() {
+  public toggle() {
     this.isExpanded = !this.isExpanded;
+  }
+
+  public logout() {
+    this.authService.logout();
   }
 }

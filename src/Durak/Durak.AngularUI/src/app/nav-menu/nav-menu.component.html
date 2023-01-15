@@ -14,11 +14,14 @@
       <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
            [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav flex-grow">
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <li *ngIf="!(isLoggedIn | async)" class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/register']">Регистрация</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/login']">Войти</a>
+          <li *ngIf="!(isLoggedIn | async)" class="nav-item" [routerLinkActive]="['link-active']">
+            <app-login></app-login>
+          </li>
+          <li *ngIf="isLoggedIn | async" class="nav-item">
+            <a class="nav-link text-dark" (click)="logout()">Выйти</a>
           </li>
         </ul>
       </div>

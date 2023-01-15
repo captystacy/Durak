@@ -5,8 +5,10 @@ using Durak.Auth.Web.Definitions.OpenIddict;
 using Durak.Auth.Web.Endpoints.ProfileEndpoints.Queries;
 using Durak.Auth.Web.Endpoints.ProfileEndpoints.ViewModels;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using OpenIddict.Server.AspNetCore;
 
 namespace Durak.Auth.Web.Endpoints.ProfileEndpoints
 {
@@ -16,6 +18,8 @@ namespace Durak.Auth.Web.Endpoints.ProfileEndpoints
         {
             app.MapGet("/api/profiles/get-roles", GetRoles);
             app.MapPost("/api/profiles/register", RegisterAccount);
+
+            app.MapGet("/api/profiles/logout", LogoutAsync);
         }
 
         [ProducesResponseType(200)]
@@ -30,5 +34,14 @@ namespace Durak.Auth.Web.Endpoints.ProfileEndpoints
         [FeatureGroupName("Profiles")]
         private async Task<OperationResult<UserProfileViewModel>> RegisterAccount([FromServices] IMediator mediator, RegisterViewModel model, HttpContext context)
             => await mediator.Send(new RegisterAccountRequest(model), context.RequestAborted);
+
+
+        [Authorize(AuthenticationSchemes = AuthData.AuthSchemes)]
+        [FeatureGroupName("Profiles")]
+        private Task LogoutAsync(HttpContext context)
+        {
+            return Task.FromResult(Results.SignOut(authenticationSchemes:
+                new[] { CookieAuthenticationDefaults.AuthenticationScheme, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme }));
+        }
     }
 }

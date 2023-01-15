@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AlertModule } from './_alert';
+import { AlertModule } from './alert';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -34,6 +34,7 @@ import { MatButtonModule } from '@angular/material/button';
       { path: 'play', component: DurakComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'oauth/callback', component: LoginComponent },
     ]),
     FormsModule,
     ReactiveFormsModule,
